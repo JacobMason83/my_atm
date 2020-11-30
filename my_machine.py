@@ -1,7 +1,8 @@
 import tkinter as tk                # importing tkinter as the gui for the app
 from tkinter import font  as tkfont #importing all the tkinter functionality
 from tkinter import *
-from tkinter import font
+
+
 account_balance = 1000
 
 class My_Atm(tk.Tk):
@@ -36,6 +37,11 @@ class My_Atm(tk.Tk):
         #this function shows a page name for the given page, and brings it up 
         frame = self.frames[page_name]
         frame.tkraise()
+        
+    
+
+        
+        
 
 
 class Start_Page(tk.Frame):
@@ -49,7 +55,7 @@ class Start_Page(tk.Frame):
         self.controller.state('zoomed')
         
         heading_label1 = tk.Label(self,
-                                 text='Mason Family Banks ATM',
+                                 text='Mason Family Bank ATM',
                                  font=('Comic Sans Serif', 50, 'bold'),
                                  fg='white',
                                  bg='#5203fc')
@@ -102,10 +108,21 @@ class Start_Page(tk.Frame):
         # #button if incorrect is true it will run this
         incorrect_password_label.pack(fill='both', expand=True)
         
+        #trying to create a background image on the pages
+        
+        # cool_image = tk.PhotoImage(file='icons\images\cool_image.jpg')
+        # background_img_label= Label(parent, image=cool_image)
+        # background_img_label.place()
+        
+        
+   
+        
         bottom_frame = tk.Frame(self,relief='raised',borderwidth=3)
         bottom_frame.pack(fill='x',side='bottom')
-        
 
+        # self.background_img_label = background_img_label
+        
+#starting of the menu page which is created on the tkinter frame setup above
 class Menu_Page(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -224,7 +241,7 @@ class Withdraw_Page(tk.Frame):
         #adding a label to be put on the page to be able to be seen when withdrawing
         balance_label = tk.Label(self,
                                  textvariable= controller.shared_data['Balance'],
-                                 font=('Comic Sans Serif', 13),
+                                 font=('Comic Sans Serif', 50),
                                  fg='white',
                                  bg='#5203fc', 
                                  anchor='w')
@@ -329,7 +346,7 @@ class Deposit_Page(tk.Frame):
         controller.shared_data['Balance'].set(account_balance)
         balance_label = tk.Label(self,
                                  textvariable=controller.shared_data['Balance'],
-                                 font=('Comic Sans Serif', 13),
+                                 font=('Comic Sans Serif', 50),
                                  fg='white',
                                  bg='#5203fc',
                                  anchor='w')
@@ -401,11 +418,12 @@ class Balance_Page(tk.Frame):
                                                   textvariable=controller.shared_data['Balance'],
                                                   font=('Comic Sans Serif', 50),
                                                   fg='white',
-                                                  bg='#5203fc',
-                                                  anchor='w')
+                                                  bg='#5203fc' )
         balance_label.pack(fill='x', side='top')
+        # the function to allow me to go back to the menu page 
         def go_back():
           controller.show_frame('Menu_Page')
+        # bottom frame styles
         button_frame = tk.Frame(self, bg='darkblue')
         button_frame.pack(fill='both',expand=True) 
         
